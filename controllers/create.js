@@ -1,6 +1,6 @@
 const createCity = async (req, res) => {
     try {
-        const newCity = new City(req.body);
+        const newCity = new city(req.body);
         await newCity.save();
         res.status(201).json(newCity);
     } catch (error) {
