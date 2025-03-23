@@ -1,3 +1,5 @@
+import city from "../models/city.js";
+
 const createCity = async (req, res) => {
     try {
         const newCity = new city(req.body);

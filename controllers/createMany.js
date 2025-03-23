@@ -1,9 +1,17 @@
-const createManyCities = async (req, res) => {
+import city from "../models/city.js";
+
+const createManyCities = async (req, res, next) => {
     try {
-        const cities = await City.insertMany(req.body);
-        res.status(201).json(cities);
+        const cities = req.body; // Recibe un array de ciudades desde el body
+        const newCities = await city.insertMany(cities);
+
+        res.status(201).json({
+            message: "Ciudades creadas con éxito",
+            data: newCities
+        });
     } catch (error) {
-        res.status(400).json({ message: "Error al crear las ciudades", error });
+        next(error);
     }
 };
-export default createManyCities
+
+export default createManyCities;

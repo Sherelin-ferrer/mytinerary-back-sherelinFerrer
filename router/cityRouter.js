@@ -1,16 +1,20 @@
 import { Router } from "express";
 
-import { AllCities, CityByName, CityByCountry } from "../controllers/read.js"; 
+import { AllCities, CityByName, cityById } from "../controllers/read.js"; 
+import createCity from "../controllers/create.js";
+import createManyCities from "../controllers/createMany.js";
 
 const routerCities = Router();
 
-// Obtener todas las ciudades
+
 routerCities.get("/allCities", AllCities);
 
-// Obtener una ciudad por nombre
 routerCities.get("/cityByName/:name", CityByName);
 
-// Obtener ciudades por país
-routerCities.get("/cityByCountry/:country", CityByCountry);
+routerCities.get("/:id", cityById);
+
+routerCities.post("/create", createCity)
+
+routerCities.post("/createMany", createManyCities)
 
 export default routerCities;
