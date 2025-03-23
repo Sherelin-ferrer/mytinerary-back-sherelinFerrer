@@ -195,8 +195,8 @@ let cities = [
             "timezone": "CET"
         }
     
-    
-    
+
 ]
+
 city.insertMany(cities) .then( () => console.log("City insetada")) 
 
