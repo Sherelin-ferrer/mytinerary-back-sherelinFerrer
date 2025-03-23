@@ -14,12 +14,12 @@ const AllCities = async (req, res) => {
 
 const CityByName = async (req, res, next) => {
     try {
-        const  cityName = await city.findOne({ name: new RegExp(`^${req.params.name}$`, "i") }).lean();
+        const cityName = await city.findOne({ name: new RegExp(`^${req.params.name}$`, "i") }).lean();
 
 
-       cityName ? res.status(200).json(cityName) : res.status(404).json({ message: "city not found" });
+        cityName ? res.status(200).json(cityName) : res.status(404).json({ message: "city not found" });
     } catch (error) {
-        next (error)
+        next(error)
     }
 };
 
@@ -34,7 +34,7 @@ const cityById = async (req, res, next) => {
             : res.status(404).json({ message: "city not found" });
 
     } catch (error) {
-        next (error)
+        next(error)
     }
 };
 

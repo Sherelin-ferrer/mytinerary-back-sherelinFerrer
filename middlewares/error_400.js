@@ -1,13 +1,13 @@
-const error400 = (error, req, res, next) => {
-    console.log("🔥 Middleware de error 400 activado:", error.message);
-    if (error.name === "ValidationError") {
+const error_400 = (error, req, res, next) => {
+
+    if (error.status === 400) {
         return res.status(400).json({
-            message: "Error de validación",
-            errors: err.errors
+            success: false,
+            message: "error 400 ",
+            response: error
         });
     }
-
-    next(error); // Si no es un error 400, pasa al siguiente middleware
+    next(error);
 };
 
-export default error400;
+export default error_400;
