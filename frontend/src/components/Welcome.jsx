@@ -1,10 +1,22 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Play } from 'lucide-react';
+import imgNavbar from "../assets/img/imgNavbar.jpg"; 
 import Carousel from '../components/Carousel';
 
 const Welcome = () => {
   return (
+<>
+
+ {/* Contenedor de la imagen de fondo */}
+ <div className="absolute inset-0 overflow-hidden w-full h-screen z-0">
+  <img 
+    src={imgNavbar}
+    alt="Fondo"
+    className="animate-zoomDown w-full h-full object-cover brightness-[.65]"
+  />
+</div>
+
     <div className="flex flex-col min-h-screen">
       {/* Contenido principal con padding-top para compensar el navbar fijo */}
       <main className="flex-grow pt-16">
@@ -44,8 +56,11 @@ const Welcome = () => {
       </main>
       
       {/* El Footer ha sido eliminado de aquí para evitar duplicación */}
+   
     </div>
+    </>
   );
+
 };
 
 export default Welcome;
