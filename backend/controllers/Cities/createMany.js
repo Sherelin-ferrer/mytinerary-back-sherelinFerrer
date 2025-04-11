@@ -1,4 +1,4 @@
-import city from "../models/city.js";
+import city from "../../models/city.js";
 
 const createManyCities = async (req, res, next) => {
     try {

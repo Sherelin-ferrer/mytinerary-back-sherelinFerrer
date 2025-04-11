@@ -1,6 +1,6 @@
 import "dotenv/config.js"
-import "../config/database.js"
-import city from "../models/city.js"
+import "../../config/database.js"
+import city from "../city.js"
 
 let cities =  [
     {
@@ -145,7 +145,7 @@ let cities =  [
     },
     {
       name: "Buenos Aires",
-      photo: "https://images.unsplash.com/photo-1493573005947-07ce da9e2844?ixlib=rb-4.0.3&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=800",
+      photo: "https://tse2.mm.bing.net/th?id=OIP.Tzm81OThs2PQ17kWl3YJGwHaE8&pid=Api",
       country: "Argentina",
       continent: "América",
       description: "La París de América Latina, famosa por el tango y su arquitectura.",
@@ -156,4 +156,6 @@ let cities =  [
   ];
   
 
+  await city.deleteMany({});
   await city.insertMany(cities);
+  

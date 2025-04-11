@@ -8,7 +8,11 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node ./server.js",
     "dev": "nodemon ./server.js",
-    "dataCity": "node ./models/data.js"
+    "dataCity": "node ./models/data/dataCity.js",
+    "userData": "node ./models/data/dataUsers.js",
+    "itineraryData": "node ./models/data/dataItinerary.js",
+    "activityData": "node ./models/data/dataActivities.js"
+    
   },
   "repository": {
     "type": "git",
