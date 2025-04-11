@@ -3,15 +3,13 @@ import CityCard from "../components/CityCard";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
-
 export default function Cities() {
   const [cities, setCities] = useState([]);
   const [filteredCities, setFilteredCities] = useState([]);
   const [search, setSearch] = useState("");
-  const [error, setError] = useState(false); // 🔹 lo que faltaba
+  const [error, setError] = useState(false);
 
   // Cargar datos desde la API
-
   useEffect(() => {
     fetch('http://localhost:8080/api/cities')
       .then(res => {
@@ -29,7 +27,6 @@ export default function Cities() {
   }, []);
 
   //Filtrar ciudades según la búsqueda
-
   useEffect(() => {
     const filtered = cities.filter((city) =>
       city.name.toLowerCase().startsWith(search.toLowerCase())
@@ -39,9 +36,8 @@ export default function Cities() {
 
   return (
     <div className="flex flex-col min-h-screen">
-    
-<Navbar/>
-      <div className="p-6  mt-20 flex-grow bg-gray-100">
+      <Navbar/>
+      <div className="p-6 mt-20 flex-grow bg-gray-100">
         <h1 className="text-3xl font-bold mb-4 text-center">Cities</h1>
         <h4 className="text-3xl mb-4 text-center">Collection of the most beautiful places and experiences</h4>
 
@@ -55,7 +51,6 @@ export default function Cities() {
           />
         </div>
 
-        {/* 🔻 Mostrar error si falló el fetch */}
         {error ? (
           <div className="text-center mt-12 text-red-500 text-lg">
             ⚠️ Error al cargar las ciudades. Intenta más tarde.
@@ -63,7 +58,12 @@ export default function Cities() {
         ) : filteredCities.length > 0 ? (
           <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             {filteredCities.map((city) => (
-              <CityCard key={city._id} name={city.name} img={city.photo} />
+              <CityCard 
+                key={city._id} 
+                id={city._id} // MODIFICADO: Pasamos el id
+                name={city.name} 
+                photo={city.photo} 
+              />
             ))}
           </div>
         ) : (
@@ -72,8 +72,7 @@ export default function Cities() {
           </div>
         )}
       </div>
-
-      <Footer /> 
+      <Footer />
     </div>
   );
 }
