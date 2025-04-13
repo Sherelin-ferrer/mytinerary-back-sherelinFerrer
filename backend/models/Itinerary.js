@@ -12,6 +12,7 @@ let schema = Schema(
     price: { type: Number, required: true },
     likes: [{ type: Schema.Types.ObjectId, ref: "users" }],
     activities: [{ type: Schema.Types.ObjectId, ref: "activities" }],
+    hashtags: [{ type: String, required: true }],
     comments: [
       {
         user: { type: Schema.Types.ObjectId, ref: "users" },

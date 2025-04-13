@@ -4,9 +4,9 @@ let collection = "users";
 
 let schema = Schema(
   {
-    email: { type: String, required: true, unique: true }, 
-    password: { type: String, required: true },       
-    photo: { type: String, default: "https://i.imgur.com/placeholder.jpg" } 
+    name: { type: String, required: true },
+    password: { type: String, required: true },
+    photo: { type: String, required: true }
   },
   { timestamps: true }
 );

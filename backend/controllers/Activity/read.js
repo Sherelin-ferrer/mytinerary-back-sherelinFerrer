@@ -4,8 +4,8 @@ import activity from "../../models/activities.js";
 // Obtener todas las actividades
 export const getAllActivities = async (req, res) => {
   try {
-    // Buscar todas las actividades
-    const activities = await activity.find().populate('itinerary', 'title');
+   
+    const activities = await activity.find()
     
     // Verificar si se encontraron actividades
     if (activities.length === 0) {

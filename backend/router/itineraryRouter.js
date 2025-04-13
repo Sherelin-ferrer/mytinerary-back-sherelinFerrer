@@ -7,7 +7,7 @@ const itineraryRouter = Router();
 
 // Definir rutas para itinerarios
 itineraryRouter.get("/", getAllItineraries);
-itineraryRouter.get("/city/:cityId", getItinerariesByCity);
+itineraryRouter.get("/city/:cityName", getItinerariesByCity);
 itineraryRouter.get("/:id", getItineraryById);
 itineraryRouter.post("/create", createItinerary);
 
