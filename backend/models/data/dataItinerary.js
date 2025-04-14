@@ -1,12 +1,12 @@
 import "dotenv/config.js";
 import "../../config/database.js";
 import itinerary from "../Itinerary.js";
-import City from "../City.js";
+import city from "../city.js";
 import user from "../User.js";
 
 async function loadItineraryData() {
   try {
-    const cities = await City.find({});
+    const cities = await city.find({});
     const users = await user.find({});
 
     const cityIds = cities.map(city => city._id);

@@ -1,4 +1,4 @@
-import  express  from "express";
+import express from "express";
 import "dotenv/config.js";
 import "./config/database.js"
 import cors from "cors";
@@ -14,7 +14,7 @@ import error_handler from "./middlewares/error_handler.js";
 
 const server = express()
 const PORT = process.env.PORT
-const ready =()=> console.log("server ready in port:"+PORT)
+const ready = () => console.log("server ready in port:" + PORT)
 
 // activar datos complejos en la url
 server.use(express.urlencoded({ extended: true }))
@@ -31,4 +31,4 @@ server.use(error_400)
 server.use(error_404)
 server.use(error_handler)
 
-server.listen(PORT,ready)
+server.listen(PORT, ready)

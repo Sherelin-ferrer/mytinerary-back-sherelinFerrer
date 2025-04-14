@@ -1,59 +1,59 @@
-
 import Itinerary from "../../models/Itinerary.js";
-import "../../models/User.js";
 import city from "../../models/city.js";
-import  "../../models/activities.js";
+import "../../models/User.js";
+import "../../models/activities.js";
 
-// Obtener todos los itinerarios con populate completo
-export const getAllItineraries = async (req, res) => {
+// Obtener todos los itinerarios
+const AllItineraries = async (req, res, next) => {
   try {
     const itineraries = await Itinerary.find()
-      .populate('city', 'name') 
-      .populate('user', 'name photo ') 
-      .populate('likes',) 
+      .populate('city', 'name')
+      .populate('user', 'name photo')
+      .populate('likes')
       .populate({
-        path: 'comments.user', 
+        path: 'comments.user',
         select: 'name photo'
       });
-    
-    return res.status(200).json({
+
+    res.status(200).json({
       success: true,
       message: 'Itineraries found',
       response: itineraries
     });
   } catch (error) {
-    return res.status(500).json({
-      success: false,
-      message: 'Error getting itineraries',
-      error: error.message
-    });
+    next(error);
   }
 };
-
-// Obtener itinerarios por ciudad
-export const getItinerariesByCity = async (req, res) => {
+const ItinerariesByCity = async (req, res, next) => {
   try {
     const { cityName } = req.params;
+    console.log("Buscando ciudad:", cityName);
 
-    // Buscar la ciudad por nombre
-    const foundCity = await city.findOne({ name: cityName });
+    const foundCity = await city.findOne({
+      name: new RegExp(`^${cityName}$`, 'i')
+    });
+
+    console.log("Ciudad encontrada:", foundCity);
 
     if (!foundCity) {
       return res.status(404).json({
         success: false,
-        message: 'City not found',
+        message: 'City not found'
       });
     }
 
-    // Buscar los itinerarios usando el ID de la ciudad encontrada
+    console.log("ID de la ciudad:", foundCity._id);
+
     const itineraries = await Itinerary.find({ city: foundCity._id })
-      .populate('city', 'name ') // Popula la ciudad
+      .populate('city', 'name')
       .populate('user', 'name photo')
-      .populate('likes', )
+      .populate('likes')
       .populate({
         path: 'comments.user',
         select: 'name photo'
       });
+
+    console.log("Itinerarios encontrados:", itineraries.length);
 
     if (itineraries.length === 0) {
       return res.status(404).json({
@@ -62,52 +62,46 @@ export const getItinerariesByCity = async (req, res) => {
       });
     }
 
-    return res.status(200).json({
+    res.status(200).json({
       success: true,
       message: 'Itineraries found',
       response: itineraries
     });
-
   } catch (error) {
-    return res.status(500).json({
-      success: false,
-      message: 'Error getting itineraries by city',
-      error: error.message
-    });
+    console.error("Error completo:", error);
+    next(error);
   }
 };
 
-// Ejemplo de un método para obtener un itinerario específico con toda su información
-export const getItineraryById = async (req, res) => {
+// Obtener un itinerario por ID
+const ItineraryById = async (req, res, next) => {
   try {
     const { id } = req.params;
-    
+
     const itinerary = await Itinerary.findById(id)
-      .populate('city','name ') 
-      .populate('user','name photo') 
-      .populate('likes') 
+      .populate('city', 'name')
+      .populate('user', 'name photo')
+      .populate('likes')
       .populate({
         path: 'comments.user',
-        select: 'name photo email' 
+        select: 'name photo email'
       });
-    
+
     if (!itinerary) {
       return res.status(404).json({
         success: false,
         message: 'Itinerary not found'
       });
     }
-    
-    return res.status(200).json({
+
+    res.status(200).json({
       success: true,
       message: 'Itinerary found',
       response: itinerary
     });
   } catch (error) {
-    return res.status(500).json({
-      success: false,
-      message: 'Error getting itinerary',
-      error: error.message
-    });
+    next(error);
   }
 };
+
+export { AllItineraries, ItinerariesByCity, ItineraryById };

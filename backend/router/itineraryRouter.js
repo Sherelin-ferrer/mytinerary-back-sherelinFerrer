@@ -1,14 +1,18 @@
 
 import { Router } from "express";
-import { getAllItineraries, getItinerariesByCity, getItineraryById } from "../controllers/Itinerary/read.js";
+import {AllItineraries, ItinerariesByCity, ItineraryById } from "../controllers/Itinerary/read.js";
 import createItinerary from "../controllers/Itinerary/create.js";
+import deleteItinerary from "../controllers/Itinerary/delete.js";
+import updateItineray from "../controllers/Itinerary/update.js";
 
 const itineraryRouter = Router();
 
-// Definir rutas para itinerarios
-itineraryRouter.get("/", getAllItineraries);
-itineraryRouter.get("/city/:cityName", getItinerariesByCity);
-itineraryRouter.get("/:id", getItineraryById);
+
+itineraryRouter.get("/",AllItineraries);
+itineraryRouter.get("/city/:cityName", ItinerariesByCity);
+itineraryRouter.get("/:id", ItineraryById);
 itineraryRouter.post("/create", createItinerary);
+itineraryRouter.delete("/deleteItinerary", deleteItinerary);
+itineraryRouter.put("/updateItinerary", updateItineray)
 
 export default itineraryRouter;
