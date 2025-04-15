@@ -1,18 +1,14 @@
 
-import Footer from '../components/Footer'
-import Navbar from '../components/Navbar'
-import Welcome from "../components/Welcome"
-import Cities from './Cities'
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
+import Welcome from "../components/Welcome";
 
 export default function Home() {
   return (
     <>
-      <Navbar></Navbar>
-
-      <Welcome></Welcome>
-      
-
-      <Footer></Footer>
+      <Navbar />
+      <Welcome />
+      <Footer />
     </>
-  )
+  );
 }
