@@ -1,4 +1,4 @@
-// router/cityRouter.js
+
 import { Router } from "express";
 import { AllCities, CityByName, cityById } from "../controllers/Cities/read.js";
 import createCity from "../controllers/Cities/create.js";
