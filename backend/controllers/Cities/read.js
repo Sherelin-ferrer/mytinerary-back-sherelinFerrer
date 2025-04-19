@@ -1,9 +1,9 @@
 import city from "../../models/city.js";
-import  "../../models/Itinerary.js";
+
 
 const AllCities = async (req, res, next) => {
     try {
-        const cities = await city.find().populate('itineraries').exec();
+        const cities = await city.find()
         
         if (!cities.length) {
             return next(new AppError('No cities found', 404));

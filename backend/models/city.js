@@ -12,7 +12,7 @@ let schema = Schema(
         currency: { type: String, required: true }, 
         population: { type: Number, required: true }, 
         timezone: { type: String, required: true }, 
-        itineraries: [{ type: Schema.Types.ObjectId, ref: "itineraries" }]
+       
 
     },
     { timestamps: true }

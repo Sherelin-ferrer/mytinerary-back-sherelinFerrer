@@ -7,7 +7,7 @@ import "../../models/activities.js";
 const AllItineraries = async (req, res, next) => {
   try {
     const itineraries = await Itinerary.find()
-      .populate('city', 'name')
+      .populate('city', 'name photo')
       .populate('user', 'name photo')
       .populate('likes')
       .populate({
@@ -45,7 +45,7 @@ const ItinerariesByCity = async (req, res, next) => {
     console.log("ID de la ciudad:", foundCity._id);
 
     const itineraries = await Itinerary.find({ city: foundCity._id })
-      .populate('city', 'name')
+      .populate('city', 'name photo')
       .populate('user', 'name photo')
       .populate('likes')
       .populate({
@@ -71,7 +71,7 @@ const ItinerariesByCity = async (req, res, next) => {
     console.error("Error completo:", error);
     next(error);
   }
-};
+}; //*
 
 // Obtener un itinerario por ID
 const ItineraryById = async (req, res, next) => {
@@ -79,7 +79,7 @@ const ItineraryById = async (req, res, next) => {
     const { id } = req.params;
 
     const itinerary = await Itinerary.findById(id)
-      .populate('city', 'name')
+      .populate('city', 'name photo')
       .populate('user', 'name photo')
       .populate('likes')
       .populate({

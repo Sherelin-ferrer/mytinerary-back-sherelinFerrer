@@ -7,6 +7,7 @@ import user from "../User.js";
 async function loadItineraryData() {
   try {
     const cities = await city.find({});
+    
     const users = await user.find({});
 
     const cityIds = cities.map(city => city._id);
@@ -36,7 +37,7 @@ async function loadItineraryData() {
         user: userIds[1],
         duration: 6,
         price: 65,
-        likes: [],
+        likes:[],
         comments: [],
         hashtags: ["#londres", "#tour", "#bigben", "#viajeexpress"]
       },
@@ -102,7 +103,7 @@ async function loadItineraryData() {
         user: userIds[7],
         duration: 5,
         price: 100,
-        likes: [],
+        likes:[],
         comments: [],
         hashtags: ["#dubai", "#compras", "#lujo", "#shopping"]
       },
@@ -113,7 +114,7 @@ async function loadItineraryData() {
         user: userIds[8],
         duration: 3,
         price: 35,
-        likes: [userIds[12], userIds[13]],
+        likes: [],
         comments: [
           {
             user: userIds[14],
