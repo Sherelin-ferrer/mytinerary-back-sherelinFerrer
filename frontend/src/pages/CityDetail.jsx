@@ -1,46 +1,31 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
-import { fetchItinerariesByCity, resetItineraries } from "../store/itinerarySlice";
+import { useParams, Link } from "react-router-dom";
+import fetchItinerariesByCity from "../Redux/actions/itineraryActions";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import ItineraryCard from "../components/ItineraryCard";
-import UnderConstruction from "../components/UnderConstruction";
-import { Link } from "react-router-dom";
+
 
 export default function CityDetail() {
   const { name } = useParams();
   const dispatch = useDispatch();
-  const { byCity: itineraries, status, error } = useSelector(state => state.itineraries);
+  const { itineraries, status, error } = useSelector(state => state.itineraries);
 
   useEffect(() => {
-    // Resetear el estado al montar el componente
-    dispatch(resetItineraries());
-    
-    // Cargar itinerarios si hay un nombre de ciudad
     if (name) {
       dispatch(fetchItinerariesByCity(name));
     }
-
-    // Limpiar al desmontar
-    return () => {
-      dispatch(resetItineraries());
-    };
   }, [dispatch, name]);
 
   return (
     <div className="flex flex-col min-h-screen bg-gray-100">
       <Navbar />
       
-      <main className="flex-grow p-6 mt-20 max-w-6xl mx-auto w-full">
-        <div className="flex justify-between items-center mb-8">
-          <h1 className="text-3xl font-bold text-gray-800">Itineraries in {name}</h1>
-          <Link 
-            to="/under-construction" 
-            className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg transition"
-          >
-           View more
-          </Link>
+      <main className="flex-grow p-6 mt-20 max-w-6xl mx-auto w-full ">
+        <div className="justify-center mb-8">
+          <h1 className="text-3xl font-bold text-center text-gray-800">Itineraries in {name}</h1>
+        
         </div>
 
         {/* Estado de carga */}
@@ -73,7 +58,7 @@ export default function CityDetail() {
           <div className="space-y-6">
             {itineraries.length > 0 ? (
               itineraries.map(itinerary => (
-                <ItineraryCard key={itinerary._name} itinerary={itinerary} />
+                <ItineraryCard key={itinerary._id} itinerary={itinerary} />
               ))
             ) : (
               <div className="bg-white p-8 rounded-lg shadow text-center">
@@ -81,16 +66,13 @@ export default function CityDetail() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
                 <h3 className="mt-2 text-lg font-medium text-gray-900">No itineraries found</h3>
-                <p className="mt-1 text-sm text-gray-500">No itineraries yet for this city {name} </p>
+                <p className="mt-1 text-sm text-gray-500">No itineraries yet for this city {name}</p>
               </div>
             )}
           </div>
         )}
 
-        {/* Sección Under Construction */}
-        <div className="mt-12">
-          <UnderConstruction message="We're working on adding more features to itineraries!" />
-        </div>
+       
       </main>
       
       <Footer />

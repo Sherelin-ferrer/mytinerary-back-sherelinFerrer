@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchCities, setSearch } from "../store/citySlice.js";
+import { fetchCities } from "../Redux/actions/cityActions";
+import { setSearch } from "../Redux/reducer/cityReducer";
 import CityCard from "../components/CityCard";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";

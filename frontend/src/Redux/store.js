@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
-import cityReducer from './citySlice';
-import itineraryReducer from './itinerarySlice';
+import cityReducer from './reducer/cityReducer'; 
+import itineraryReducer from './reducer/itineraryReducer'; 
 
 const store = configureStore({
   reducer: {

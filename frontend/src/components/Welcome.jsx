@@ -4,6 +4,7 @@ import { Play } from 'lucide-react';
 import imgNavbar from "../assets/img/imgNavbar.jpg"; 
 import Carousel from '../components/Carousel';
 
+
 const Welcome = () => {
   return (
 <>

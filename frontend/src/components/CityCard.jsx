@@ -9,15 +9,7 @@ export default function CityCard({  name, photo }) {
           <h2 className="text-xl text-center font-bold">{name}</h2>
         </div>
       </Link>
-       {/* Botón View More */}
-       <div className="p-4 pt-0">
-        <Link 
-          to={`/cities/${name}`}
-          className="inline-block w-full text-center bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200"
-        >
-          View More
-        </Link>
-      </div>
+      
       
     </div>
   );
