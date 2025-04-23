@@ -1,12 +1,26 @@
 import user from "../../models/User.js";
 
-const AllUsers = async (req, res) => {
+const AllUsers = async (req, res,next) => {
     try {
-        const Users = await user.find();
+        let queryParams = req.query
+        console.log(queryParams)
+        let { name} = req.query
+        let query = {}
+
+        if (name) {
+           
+            query.name = {$regex: name , $options: "i"}
+        } console.log("query por name")
+       
+
+        const Users = await user.find(query);
         res.json(Users);
     } catch (error) {
-        res.status(500).json({ message: "Error al obtener los usuarios", error });
+       next(error)
     }
 };
 
+
+
 export default AllUsers
+

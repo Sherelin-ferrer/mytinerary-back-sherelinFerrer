@@ -8,7 +8,7 @@ const AllItineraries = async (req, res, next) => {
   try {
     const itineraries = await Itinerary.find()
       .populate('city', 'name photo')
-      .populate('user', 'name photo')
+      .populate('user', 'name photo lastname')
       .populate('likes')
       .populate({
         path: 'comments.user',
@@ -46,7 +46,7 @@ const ItinerariesByCity = async (req, res, next) => {
 
     const itineraries = await Itinerary.find({ city: foundCity._id })
       .populate('city', 'name photo')
-      .populate('user', 'name photo')
+      .populate('user', 'name photo lastname')
       .populate('likes')
       .populate({
         path: 'comments.user',
@@ -80,7 +80,7 @@ const ItineraryById = async (req, res, next) => {
 
     const itinerary = await Itinerary.findById(id)
       .populate('city', 'name photo')
-      .populate('user', 'name photo')
+      .populate('user', 'name photo lastname')
       .populate('likes')
       .populate({
         path: 'comments.user',

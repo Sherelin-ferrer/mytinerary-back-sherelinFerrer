@@ -1,95 +1,112 @@
 import "dotenv/config.js"
 import "../../config/database.js"
-import  user from "../User.js";
+import user from "../User.js";
 
 const users = [
   {
-    name: "Juan Pérez",
-
+    name: "Juan",
+    lastname: "Pérez",
+    email: "juan.dragon@realidadinvertida.com",
     password: "123456",
     photo: "https://randomuser.me/api/portraits/men/1.jpg"
   },
   {
-    name: "María Gómez",
- 
+
+    name: "María",
+    lastname: "Gómez",
+    email: "maria.laberinto@dimensionesperdidas.org",
     password: "123456",
     photo: "https://randomuser.me/api/portraits/women/2.jpg"
   },
   {
-    name: "Carlos Díaz",
-
+    name: "Carlos",
+    lastname: "Díaz",
+    email: "carlos.sombra@ocasoeterno.net",
     password: "123456",
     photo: "https://randomuser.me/api/portraits/men/3.jpg"
   },
   {
-    name: "Laura Fernández",
-
+    name: "Laura",
+    lastname: "Fernández",
+    email: "laura.espiral@universosuperpuesto.io",
     password: "123456",
     photo: "https://randomuser.me/api/portraits/women/4.jpg"
   },
   {
-    name: "Pedro Martínez",
- 
+    name: "Pedro",
+    lastname: "Martínez",
+    email: "pedro.mirada@relojsinaguja.com",
     password: "123456",
     photo: "https://randomuser.me/api/portraits/men/5.jpg"
   },
   {
-    name: "Ana Torres",
-
+    name: "Ana",
+    lastname: "Torres",
+    email: "ana.neblina@fragmentodeltiempo.net",
     password: "123456",
     photo: "https://randomuser.me/api/portraits/women/6.jpg"
   },
   {
-    name: "Javier López",
-
+    name: "Javier",
+    lastname: "López",
+    email: "javier.luz@bosqueilusorio.org",
     password: "123456",
     photo: "https://randomuser.me/api/portraits/men/7.jpg"
   },
   {
-    name: "Carmen Ruiz",
-  
+
+    name: "Carmen",
+    lastname: "Ruiz",
+    email: "carmen.palabra@maresinfinito.com",
     password: "123456",
     photo: "https://randomuser.me/api/portraits/women/8.jpg"
   },
   {
-    name: "Andrés Ramírez",
-    
+    name: "Andrés",
+    lastname: "Ramírez",
+    email: "andres.cristal@ciudadflotante.org",
     password: "123456",
     photo: "https://randomuser.me/api/portraits/men/9.jpg"
   },
   {
-    name: "Lucía Herrera",
-
+    name: "Lucía",
+    lastname: "Herrera",
+    email: "lucia.luna@ventanadeltiempo.io",
     password: "123456",
     photo: "https://randomuser.me/api/portraits/women/10.jpg"
   },
   {
-    name: "Miguel Castro",
-   
+    name: "Miguel",
+    lastname: "Castro",
+    email: "miguel.humo@universoabstracto.com",
     password: "123456",
     photo: "https://randomuser.me/api/portraits/men/11.jpg"
   },
   {
-    name: "Sofía Morales",
-
+    name: "Sofía",
+    lastname: "Morales",
+    email: "sofia.onda@caminodeespejos.net",
     password: "123456",
     photo: "https://randomuser.me/api/portraits/women/12.jpg"
   },
   {
-    name: "Tomás Navarro",
-
+    name: "Tomás",
+    lastname: "Navarro",
+    email: "tomas.silencio@dimensionesonora.org",
     password: "123456",
     photo: "https://randomuser.me/api/portraits/men/13.jpg"
   },
   {
-    name: "Valentina Soto",
-
+    name: "Valentina",
+    lastname: "Soto",
+    email: "valentina.sueño@realidadparalela.net",
     password: "123456",
     photo: "https://randomuser.me/api/portraits/women/14.jpg"
   },
   {
-    name: "Gabriel Medina",
-   
+    name: "Gabriel",
+    lastname: "Medina",
+    email: "gabriel.rayo@cielosincolor.io",
     password: "123456",
     photo: "https://randomuser.me/api/portraits/men/15.jpg"
   }

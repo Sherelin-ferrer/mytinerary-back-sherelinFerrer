@@ -26,6 +26,8 @@ server.use(cors())
 server.use(morgan('dev'))
 
 
+
+
 server.use('/api', indexRouter)
 server.use(error_400)
 server.use(error_404)
