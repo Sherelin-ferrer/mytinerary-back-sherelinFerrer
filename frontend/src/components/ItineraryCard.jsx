@@ -16,6 +16,7 @@ export default function ItineraryCard({ itinerary }) {
 
   const authorPhoto = itinerary.user?.photo || '/default-profile.png';
   const authorName = itinerary.user?.name || 'Unknown';
+  const authorLastname = itinerary.user?.lastname || 'Unknown';
   const hashtags = itinerary.hashtags || [];
   const price = itinerary.price || 0;
   const duration = itinerary.duration || 0;
@@ -46,13 +47,14 @@ export default function ItineraryCard({ itinerary }) {
       <div className="flex items-center space-x-4 mb-3">
         <img
           src={authorPhoto}
-          alt={authorName}
+          alt={`${authorName} ${authorLastname}`}
           className="w-14 h-14 rounded-full object-cover"
           onError={(e) => {
             e.target.src = '/default-profile.png';
           }}
         />
-        <span className="font-semibold">{authorName}</span>
+         <span className="font-semibold">{authorName} {authorLastname}</span>
+
       </div>
 
       {/* 💵 Precio y ⏱ Duración */}
@@ -99,7 +101,7 @@ export default function ItineraryCard({ itinerary }) {
       {/* 🚧 Expansión */}
       {expanded && (
         <div className="mt-4 bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4 rounded-r">
-          <h3 className="font-semibold text-lg mb-2">Under Construction 🚧</h3>
+          <h3 className="font-semibold text-lg mb-2">Under Construction </h3>
           <p>We're working to add activities and comments to this itinerary.</p>
         </div>
       )}
