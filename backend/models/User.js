@@ -9,6 +9,7 @@ let schema = Schema(
     password: { type: String, required: true },
     photo: { type: String, required: true },
     email: {type: String, required: true, unique: true},
+    online: {type:Boolean, default: false}
 
   },
   { timestamps: true }

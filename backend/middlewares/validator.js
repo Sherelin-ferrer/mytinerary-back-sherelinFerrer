@@ -1,6 +1,6 @@
 const validator = (schema) => [
     (req, res, next) => {
-        console.log("entra al validador"); // Aquí era el mensaje que querías mostrar
+        console.log("entra al validador"); 
 
         const validation = schema.validate(req.body, { abortEarly: false });
       

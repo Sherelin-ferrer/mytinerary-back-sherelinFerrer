@@ -1,4 +1,4 @@
-import user from "../models/User.js"; // Faltaba esta importación
+import user from "../models/User.js"; 
 
 export default async (req, res, next) => {
     try {
@@ -7,8 +7,8 @@ export default async (req, res, next) => {
         
         if (account) {
             return res.status(400).json({
-                success: false, // Corregido "succes" a "success"
-                message: "User already exists" // Corregido "alredy" a "already"
+                success: false, 
+                message: "User already exists" 
             });
         }
         

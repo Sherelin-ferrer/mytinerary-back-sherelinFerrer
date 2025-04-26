@@ -5,9 +5,11 @@ import schemaSingIn from "../schemas/auth/signIn.js"
 import validator from "../middlewares/validator.js";
 import accountNotExists from "../middlewares/accountNotExists.js";
 import passwordOk from "../middlewares/passwordOk.js";
+import generateToken from "../middlewares/generateToken.js";
+
 
 const routerAuth = Router()
 
-routerAuth.post("/signin",validator(schemaSingIn),accountNotExists,passwordOk,singIn)
+routerAuth.post("/signin",validator(schemaSingIn),accountNotExists,passwordOk,generateToken,singIn)
 
 export default routerAuth
